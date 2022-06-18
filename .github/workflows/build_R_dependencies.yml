@@ -16,7 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-  example_matrix:
+  matrix:
     strategy:
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
@@ -29,3 +29,4 @@ jobs:
         with:
           r-version: ${{ matrix.R }}
       - run: Rscript -e 'print("hello")'
+    runs-on: ${{ matrix.os }}
