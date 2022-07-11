@@ -1,4 +1,4 @@
-name: build_r_dependencies
+name: python
 on: [push]
 jobs:
   matrix:
