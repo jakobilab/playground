@@ -17,5 +17,6 @@ jobs:
       with:
         cache-version: 1
     - run: Rscript -e 'library(biomaRt)'
+    - run: Rscript -e 'SessionInfo()'
 
     runs-on: ${{ matrix.os }}
