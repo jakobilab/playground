@@ -11,9 +11,9 @@ jobs:
   #        R: [ '3.6.3', '4.0.0', '4.1.0' , '4.2.0' ]
           R: [ '4.2.0' ]
           python-version: ["3.7"]
-    prepare_OS_environment:
-      name: Install packages for R ${{ matrix.R }} / Python ${{ matrix.python-version }} on ${{ matrix.os }}
-      run: apt-get install libxml2-utils
+    # prepare_OS_environment:
+    #   name: Install packages for R ${{ matrix.R }} / Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    #   run: apt-get install libxml2-utils
     prepare_R_environment:
       name: R ${{ matrix.R }} on ${{ matrix.os }}
       steps:
