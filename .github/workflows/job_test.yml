@@ -16,5 +16,8 @@ jobs:
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
         cache-version: 1
-    - run: Rscript -e 'library(devtools); install_github("dieterich-lab/CircTest", ref = "master"); install_github("dieterich-lab/primex", ref = "master") '
+        extra-packages: |
+          github::dieterich-lab/CircTest
+          github::dieterich-lab/primex
+    - run: Rscript -e 'library(primex)'
     runs-on: ${{ matrix.os }}
