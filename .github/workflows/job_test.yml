@@ -1,3 +1,7 @@
+name: Main test suite
+
+on: [push]
+
 jobs:
   example_matrix:
     strategy:
