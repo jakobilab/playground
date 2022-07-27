@@ -1,38 +1,12 @@
-name: Main test suite
-
-on: [push]
-
 jobs:
-    matrix:
-      strategy:
-        matrix:
-          os: [ubuntu-22.04]
-  #        os: [ubuntu-18.04, ubuntu-20.04, ubuntu-22.04, macos-10.15, macos-11, macos-12]
-  #        R: [ '3.6.3', '4.0.0', '4.1.0' , '4.2.0' ]
-          R: [ '4.2.0' ]
-          python-version: ["3.7"]
-    # prepare_OS_environment:
-    #   name: Install packages for R ${{ matrix.R }} / Python ${{ matrix.python- }} on ${{ matrix.os }}
-    #   run: apt-get install libxml2-utils
-      prepare_R_environment:
-        name: R ${{ matrix.R }} on ${{ matrix.os }}
-        steps:
-        - uses: actions/checkout@v2
-        - uses: r-lib/actions/setup-r@v2
-        # - uses: r-lib/actions/setup-r-dependencies@v2
+  example_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+        R: [ '4.2.0' ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: r-lib/actions/setup-r@v2
           with:
             cache-version: 1
         - run: Rscript -e 'SessionInfo()'
-  # prepare_python_environment:
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Set up Python ${{ matrix.python-version }}
-  #       uses: actions/setup-python@v4
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: ~/.cache/pip
-  #         key: ${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
-  #         python-version: ${{ matrix.python-version }}
-  #     - name: Install dependencies
-  #       run: |
-  #         python -m pip install --upgrade pip
