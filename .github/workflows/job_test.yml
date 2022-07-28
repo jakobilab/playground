@@ -21,3 +21,8 @@ jobs:
           github::dieterich-lab/primex
     - run: Rscript -e 'library(primex)'
     runs-on: ${{ matrix.os }}
+    name: R ${{ matrix.R }} on ${{ matrix.os }} v2
+    steps:
+    - uses: actions/checkout@v2
+    - run: Rscript -e 'library(primex)'
+    runs-on: ${{ matrix.os }}
