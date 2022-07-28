@@ -35,6 +35,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - run: |
         python -m pip install --upgrade pip
+        which pip
+        pip --version
         python -m pip install git+https://github.com/jakobilab/circtools.git@devel
         circtools --version
     runs-on: ${{ matrix.os }}
