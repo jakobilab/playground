@@ -1,7 +1,7 @@
 name: Set up R environment
 on: [push]
 jobs:
-  matrix:
+  job1:
     strategy:
       matrix:
         os: [ubuntu-22.04]
@@ -21,8 +21,29 @@ jobs:
           github::dieterich-lab/primex
     - run: Rscript -e 'library(primex)'
     runs-on: ${{ matrix.os }}
-    name: R ${{ matrix.R }} on ${{ matrix.os }} v2
+
+  job2:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04]
+#        os: [ubuntu-18.04, ubuntu-20.04, ubuntu-22.04, macos-10.15, macos-11, macos-12]
+#        R: [ '3.6.3', '4.0.0', '4.1.0' , '4.2.0' ]
+        #R: [ '4.2.0' ]
+        # python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.8"]
+    name: Python ${{ matrix.version }} on ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
-    - run: Rscript -e 'library(primex)'
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+      - uses: actions/setup-python@v4
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install circtools
+          circtools --version
     runs-on: ${{ matrix.os }}
