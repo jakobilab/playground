@@ -7,6 +7,7 @@ Authors@R:
              role = c("aut", "cre"),
              email = "tjakobi@arizona.edu"))
 Description: This is a simple package used to test the installation of all R dependencies of circtools.
+Depends: aod, ballgown, biomaRt, data.table, locfit (<=1.5-9.4), edgeR, GenomicFeatures, GenomicRanges, ggbio, ggfortify, ggplot2, ggrepel, gridExtra, openxlsx, plyr, reshape2, devtools, kableExtra, formattable, dplyr, RColorBrewer, EnsDb.Rnorvegicus.v79, EnsDb.Mmusculus.v79, EnsDb.Hsapiens.v86
 Imports: aod, ballgown, biomaRt, data.table, edgeR, GenomicFeatures, GenomicRanges, ggbio, ggfortify, ggplot2, ggrepel, gridExtra, openxlsx, plyr, reshape2, devtools, kableExtra, formattable, dplyr, RColorBrewer, EnsDb.Rnorvegicus.v79, EnsDb.Mmusculus.v79, EnsDb.Hsapiens.v86
 Suggests:
 License: GPL (>= 2)
