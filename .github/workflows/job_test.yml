@@ -16,9 +16,8 @@ jobs:
         r-version: ${{ matrix.R }}
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
-        cache-version: 2
+        # cache-version: 2
         extra-packages: |
-          any::rcmdcheck, locfit=?ignore-before-r=4.1.0
           github::dieterich-lab/CircTest
           github::dieterich-lab/primex
     - run: Rscript -e 'library(primex)'
